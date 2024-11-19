@@ -51,16 +51,6 @@ impl<T> Deref for Ref<T> {
   }
 }
 
-#[cfg(debug_assertions)]
-impl<T> Drop for Ref<T> {
-  fn drop(&mut self) {
-    debug_assert_eq!(
-      self.count, 0,
-      "Ref count is not equal to 0 while dropping Ref, potential memory leak"
-    );
-  }
-}
-
 impl<T: 'static> ToNapiValue for Ref<T> {
   unsafe fn to_napi_value(env: sys::napi_env, val: Self) -> Result<sys::napi_value> {
     let mut result = ptr::null_mut();
