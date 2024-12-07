@@ -860,7 +860,7 @@ impl Env {
   pub fn create_reference_from_raw(env: sys::napi_env, raw_value: sys::napi_value) -> Result<Ref<()>>
   {
     let mut raw_ref = ptr::null_mut();
-    let initial_ref_count = 1;
+    let initial_ref_count = 2;
     check_status!(unsafe {
         sys::napi_create_reference(env, raw_value, initial_ref_count, &mut raw_ref)
       })?;
