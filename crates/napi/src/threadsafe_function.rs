@@ -162,11 +162,11 @@ impl Drop for ThreadsafeFunctionHandle {
             sys::ThreadsafeFunctionReleaseMode::release,
           )
         };
-        assert!(
-          release_status == sys::Status::napi_ok,
-          "Threadsafe Function release failed {}",
-          Status::from(release_status)
-        );
+        // assert!(
+        //   release_status == sys::Status::napi_ok,
+        //   "Threadsafe Function release failed {}",
+        //   Status::from(release_status)
+        // );
       }
     })
   }
