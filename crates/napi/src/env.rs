@@ -8,7 +8,6 @@ use std::future::Future;
 use std::mem;
 use std::os::raw::{c_char, c_void};
 use std::ptr;
-use crate::sys;
 
 use crate::bindgen_runtime::FromNapiValue;
 #[cfg(feature = "napi4")]
