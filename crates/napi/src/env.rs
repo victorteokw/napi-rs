@@ -857,13 +857,12 @@ impl Env {
   }
 
   /// This API create a new reference with the initial 1 ref count to the Object passed in.
-  pub fn create_reference_from_raw<T>(&self, value: sys::napi_value) -> Result<Ref<()>>
+  pub fn create_reference_from_raw(env: sys::napi_env, raw_value: sys::napi_value) -> Result<Ref<()>>
   {
     let mut raw_ref = ptr::null_mut();
     let initial_ref_count = 1;
-    let raw_value = value;
     check_status!(unsafe {
-        sys::napi_create_reference(self.0, raw_value, initial_ref_count, &mut raw_ref)
+        sys::napi_create_reference(env, raw_value, initial_ref_count, &mut raw_ref)
       })?;
     Ok(Ref {
       raw_ref,
