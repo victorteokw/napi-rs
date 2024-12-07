@@ -857,7 +857,7 @@ impl Env {
   }
 
   /// This API create a new reference with the initial 1 ref count to the Object passed in.
-  pub fn create_reference_from_raw<T>(&self, value: napi::sys::napi_value) -> Result<Ref<()>>
+  pub fn create_reference_from_raw<T>(&self, value: sys::napi_value) -> Result<Ref<()>>
   {
     let mut raw_ref = ptr::null_mut();
     let initial_ref_count = 1;
